@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.0] – 2025-11-26
+
+### Added
+
+- Installed **FeedMe** for simple external API consumption.
+- New **Rick & Morty landing page** showcasing Datastar-based API filtering.
+- Datastar integration for **server-driven API updates** using FeedMe JSON feeds.
+- Added custom **site routes** for new landing pages (Rick & Morty, grid layout demo).
+- Added custom routes to seomate sitemap.xml
+
 ## [1.3.0] – 2025-11-07
 
 ### Added

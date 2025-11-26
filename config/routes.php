@@ -11,4 +11,6 @@
 
 return [
     'api' => 'graphql/api',
+    'flexible-grid-layout' => ['template' => '_custom/layout'],
+    'rick-and-morty-datastar' => ['template' => '_custom/rick-and-morty']
 ];

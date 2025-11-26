@@ -30,5 +30,9 @@ return [
                 'params' => ['changefreq' => 'weekly', 'priority' => 1],
             ],
         ],
+        'custom' => [
+            '/rick-and-morty-datastar' => ['changefreq' => 'weekly', 'priority' => 1],
+            '/flexible-grid-layout' => ['changefreq' => 'weekly', 'priority' => 1],
+        ],
     ],
 ];
