@@ -19,14 +19,16 @@ return [
     'sitemapConfig' => [
         'elements' => [
             'home' => ['changefreq' => 'weekly', 'priority' => 0.5],
+            'map' => ['changefreq' => 'weekly', 'priority' => 0.5],
+            'search' => ['changefreq' => 'weekly', 'priority' => 0.5],
             'pages' => [
                 'elementType' => \craft\elements\Entry::class,
-                'criteria' => ['section' => 'pages'],
+                'criteria' => ['section' => 'pages', 'seoHideGenerated' => 0],
                 'params' => ['changefreq' => 'weekly', 'priority' => 1],
             ],
             'blog' => [
                 'elementType' => \craft\elements\Entry::class,
-                'criteria' => ['section' => 'blog'],
+                'criteria' => ['section' => 'blog', 'seoHideGenerated' => 0],
                 'params' => ['changefreq' => 'weekly', 'priority' => 1],
             ],
         ],

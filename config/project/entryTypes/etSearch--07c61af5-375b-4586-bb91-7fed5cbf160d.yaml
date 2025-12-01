@@ -3,6 +3,12 @@ description: null
 fieldLayouts:
   a3454708-32a0-4b9d-87ba-9379d21244ac:
     cardThumbAlignment: end
+    generatedFields:
+      -
+        handle: seoHideGenerated
+        name: 'Seo Hide Generated'
+        template: '{{ object.seo.seoHide ? 1 : 0 }}'
+        uid: 501b1b12-e462-43a8-b93e-55e9d3742ce8
     tabs:
       -
         elementCondition: null
