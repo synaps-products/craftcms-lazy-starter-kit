@@ -10,4 +10,8 @@ Disallow: /templates/
 
 Allow: /
 
-Sitemap: https://craftcms-lazy-starter-kit.webworker.me/sitemap.xml
+Sitemap: https://craft-kit.dev/sitemap.xml
+
+# LLM metadata
+# https://craft-kit.dev/llms.txt
+# https://craft-kit.dev/llms-full.txt
