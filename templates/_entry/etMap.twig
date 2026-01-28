@@ -10,7 +10,8 @@
              data-signals:_locations='[]'
              data-effect="
                   if ($_locations) {
-                    updateMarkers($_locations)
+                    updateMarkers($_locations);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }
               "
         >
