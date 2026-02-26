@@ -19,7 +19,7 @@
 
   /* LAYOUT */
   .layout {
-    > :not(.blocks):not([class]) {
+    > :not(.blocks) {
       @apply [grid-column:content];
     }
 
@@ -44,40 +44,46 @@
   .blocks {
     @apply [grid-column:full];
 
-    > *:not(class) {
-      @apply [grid-column:content];
-    }
-
-    > .blocks__content {
+    > * {
       @apply py-[var(--gap-blocks)] [grid-column:content];
     }
 
+    > .blocks__content {
+      @apply [grid-column:content];
+    }
+
     > .blocks__popout {
-      @apply py-[var(--gap-blocks)] [grid-column:popout];
+      @apply [grid-column:popout];
     }
 
     > .blocks__feature {
-      @apply py-[var(--gap-blocks)] [grid-column:feature];
+      @apply [grid-column:feature];
     }
 
     > .blocks__full {
-      @apply py-[var(--gap-blocks)] [grid-column:full];
+      @apply [grid-column:full];
     }
 
     > .blocks__content-to-feature {
-      @apply py-[var(--gap-blocks)] [grid-column:content-start/feature-end];
+      @apply [grid-column:content-start/feature-end];
     }
 
     > .blocks__feature-to-content {
-      @apply py-[var(--gap-blocks)] [grid-column:feature-start/content-end];
+      @apply [grid-column:feature-start/content-end];
     }
 
     > .blocks__content-to-full {
-      @apply py-[var(--gap-blocks)] [grid-column:content-start/full-end];
+      @apply [grid-column:content-start/full-end];
     }
 
     > .blocks__full-to-content {
-      @apply py-[var(--gap-blocks)] [grid-column:full-start/content-end];
+      @apply [grid-column:full-start/content-end];
+    }
+  }
+
+  .blocks--header {
+    > * {
+      @apply pb-0;
     }
   }
 
@@ -85,10 +91,8 @@
     @apply bg-gray-200;
   }
 
-  .blocks--header {
-    > .blocks__content {
-      @apply mb-0;
-    }
+  .blocks--spaceless > * {
+    @apply py-0;
   }
 
   /* STACK */
