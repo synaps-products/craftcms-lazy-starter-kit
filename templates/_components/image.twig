@@ -1,24 +1,25 @@
-{%- set _lazy = lazy ?? true -%}
 {%- set _fetchpriority = fetchpriority ?? false -%}
-{%- set _sizes = sizes ?? [768, 1536] -%}
+{%- set _lazy = _fetchpriority ? false : (lazy ?? true) -%}
+{%- set _sizes = (_sizes ?? [768,1536])|sort -%}
 {%- set _sizesAttr = sizesAttr ?? '100vw' -%}
 {%- set _aspectRatio = aspectRatio ?? '' -%}
 {%- set _ratio = ratio ?? null -%}
+{%- set _splitRatio = _ratio ? _ratio|split(':') : null -%}
 {%- set _quality = quality ?? 85 -%}
 {%- set _objectFit = objectFit ?? false -%}
 {%- set _class = class ?? '' -%}
 {%- set _pictureClass = pictureClass ?? '' -%}
 {%- set _imgOnly = imgOnly ?? false -%}
 {%- set _showCaption = showCaption ?? false -%}
-{%- set _allowedExtensions = ['png', 'jpg', 'jpeg', 'webp', 'avif', 'JPG', 'PNG', 'JPEG'] -%}
+{%- set _allowedExtensions = ['png', 'jpg', 'jpeg', 'webp', 'avif'] -%}
 {%- set _formats = formats ?? ['webp', 'jpeg'] -%}
 {%- set _lqip = lqip ?? false -%}
 {%- set _lqipWidth = lqipWidth ?? 20 -%}
 {%- set _lqipQuality = lqipQuality ?? 30 -%}
 
 {%- if image -%}
-  {%- set url = image.getUrl() -%}
-  {%- set extension = image.extension -%}
+  {%- set url = image.url -%}
+  {%- set extension = image.extension|lower -%}
   {%- set altText = image.alt ?? '' -%}
   {%- set focalPoint = image.getFocalpoint('asCss') ?? '50% 50%' -%}
   {%- set style = _objectFit ? 'height: 100%; width: 100%; object-fit: cover; object-position: ' ~ focalPoint : '' -%}
@@ -31,9 +32,8 @@
 
     {%- for outputWidth in _sizes -%}
       {%- set transformOptions = { width: outputWidth, quality: _quality } -%}
-      {%- if _ratio -%}
-        {%- set splitRatio = _ratio|split(':') -%}
-        {%- set transformOptions = transformOptions|merge({ height: outputWidth * (splitRatio|last) / (splitRatio|first) }) -%}
+      {%- if _splitRatio -%}
+        {%- set transformOptions = transformOptions|merge({ height: outputWidth * (_splitRatio|last) / (_splitRatio|first) }) -%}
       {%- endif -%}
 
       {# JPEG #}
@@ -58,15 +58,26 @@
       avif: srcsets.avif|join(', ')
     } -%}
 
+    {%- set fallbackWidth = _sizes|first -%}
+    {%- set fallbackTransform = { width: fallbackWidth, quality: _quality } -%}
+
+    {%- if _splitRatio -%}
+      {%- set fallbackTransform = fallbackTransform|merge({
+        height: fallbackWidth * (_splitRatio|last) / (_splitRatio|first)
+      }) -%}
+    {%- endif -%}
+
+    {%- set fallbackSrc = image.url(fallbackTransform) -%}
+
     {%- if _imgOnly -%}
-      <img src="{{ url }}"
+      <img src="{{ fallbackSrc }}"
            srcset="{{ srcsetStrings.jpeg }}"
            class="{{ imageClass }}"
            width="{{ image.width }}"
            height="{{ image.height }}"
            alt="{{ altText }}"
            sizes="{{ _sizesAttr }}"
-        {{ _fetchpriority ? ' fetchpriority="high"' }}
+        {{ _fetchpriority ? ' fetchpriority="high" loading="eager" decoding="async"' }}
         {{ _lazy ? ' loading="lazy"' }}
         {% if _objectFit %} style="{{ style }}"{% endif %}/>
     {%- else -%}
@@ -81,15 +92,14 @@
         {%- if 'jpeg' in _formats and srcsetStrings.jpeg -%}
           <source type="image/jpeg" srcset="{{ srcsetStrings.jpeg }}" sizes="{{ _sizesAttr }}" />
         {%- endif -%}
-        <img src="{{ url }}"
+        <img src="{{ fallbackSrc }}"
              srcset="{{ srcsetStrings.jpeg }}"
              class="{{ imageClass }}"
              width="{{ image.width }}"
              height="{{ image.height }}"
              alt="{{ altText }}"
              sizes="{{ _sizesAttr }}"
-             onload="this.parentElement.classList.add('is-loaded')"
-          {{ _fetchpriority ? ' fetchpriority="high"' }}
+          {{ _fetchpriority ? ' fetchpriority="high" loading="eager" decoding="async"' }}
           {{ _lazy ? ' loading="lazy"' }}
           {% if _objectFit %} style="{{ style }}"{% endif %}/>
       </picture>
@@ -97,11 +107,10 @@
   {%- else -%}
     <img src="{{ url }}"
          class="{{ imageClass }}"
-         width="{{ image.width }}"
-         height="{{ image.height }}"
          alt="{{ altText }}"
          sizes="{{ _sizesAttr }}"
+      {{ _fetchpriority ? ' fetchpriority="high" loading="eager" decoding="async"' }}
       {{ _lazy ? ' loading="lazy"' }}
-      {% if _objectFit %} style="{{ style }}"{% endif %}/>
+    />
   {%- endif -%}
 {%- endif -%}
