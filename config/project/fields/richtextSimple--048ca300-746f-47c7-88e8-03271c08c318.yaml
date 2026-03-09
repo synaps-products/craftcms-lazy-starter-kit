@@ -4,14 +4,21 @@ instructions: null
 name: 'Rich Text - Simple'
 searchable: true
 settings:
+  advancedLinkFields: null
   availableTransforms: ''
   availableVolumes: '*'
   characterLimit: null
-  ckeConfig: 85ac7a39-7c84-4707-9ebc-e0f0666d6023 # Simple
-  createButtonLabel: null
+  css: null
   defaultTransform: null
-  expandEntryButtons: false
+  defaultUploadLocationSubpath: null
+  defaultUploadLocationVolume: null
   fullGraphqlData: false
+  headingLevels: false
+  imageEntryTypeUid: null
+  imageFieldUid: null
+  imageMode: img
+  js: null
+  options: null
   parseEmbeds: false
   purifierConfig: null
   purifyHtml: true
@@ -20,6 +27,13 @@ settings:
   showWordCount: false
   sourceEditingGroups:
     - __ADMINS__
+  toolbar:
+    - bold
+    - underline
+    - italic
+    - '|'
+    - removeFormat
+    - sourceEditing
   wordLimit: null
 translationKeyFormat: null
 translationMethod: none

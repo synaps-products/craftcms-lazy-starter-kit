@@ -1,3 +1,4 @@
+allowLineBreaksInTitles: false
 color: orange
 description: null
 fieldLayouts:
@@ -13,6 +14,7 @@ fieldLayouts:
             dateAdded: '2024-09-18T12:40:27+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: f031cebf-f66e-478f-971f-53923dc0c7f2 # File - Media
             handle: null
             instructions: null
@@ -28,6 +30,7 @@ fieldLayouts:
             dateAdded: '2024-11-14T11:12:56+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 177e5629-be0d-45a5-8751-ee4a081d01d0 # Switch - Off
             handle: mediaShowCaption
             instructions: null
@@ -49,6 +52,7 @@ fieldLayouts:
             dateAdded: '2025-11-21T09:47:41+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 3c6dd0d6-6cbf-415f-a6fe-3bc205817b94 # Anchor
             handle: null
             instructions: null
@@ -63,6 +67,7 @@ fieldLayouts:
         name: Settings
         uid: d50a2a86-a4d9-41b0-b7f7-855372a07992
         userCondition: null
+    thumbFieldKey: 'layoutElement:293325f0-efb5-4532-bed8-8ece59244dd0'
 handle: blockMedia
 hasTitleField: false
 icon: image
@@ -74,3 +79,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

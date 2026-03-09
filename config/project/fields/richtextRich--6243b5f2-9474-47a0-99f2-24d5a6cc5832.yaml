@@ -4,15 +4,28 @@ instructions: null
 name: 'Rich Text - Rich'
 searchable: true
 settings:
+  advancedLinkFields:
+    - target
+    - ariaLabel
+    - download
   availableTransforms: ''
   availableVolumes:
     - d55b1175-f5cd-4977-8625-4333d431a8f6 # Files
   characterLimit: null
-  ckeConfig: 068cbf85-9a16-4e3b-a502-593a9e10844d # Rich
-  createButtonLabel: null
+  css: '.ui-teaser { font-weight: bold; font-size: 120%; }'
   defaultTransform: null
-  expandEntryButtons: false
+  defaultUploadLocationSubpath: null
+  defaultUploadLocationVolume: d55b1175-f5cd-4977-8625-4333d431a8f6 # Files
   fullGraphqlData: false
+  headingLevels:
+    - '2'
+    - '3'
+    - '4'
+  imageEntryTypeUid: null
+  imageFieldUid: null
+  imageMode: img
+  js: "return {\r\n  style: {\r\n    definitions: [\r\n      {\r\n        name: 'Teaser',\r\n        element: 'p',\r\n        classes: [\r\n          'ui-teaser',\r\n        ],\r\n      }\r\n    ],\r\n  },\r\n}"
+  options: null
   parseEmbeds: false
   purifierConfig: null
   purifyHtml: true
@@ -21,6 +34,22 @@ settings:
   showWordCount: false
   sourceEditingGroups:
     - __ADMINS__
+  toolbar:
+    - heading
+    - style
+    - '|'
+    - bold
+    - underline
+    - italic
+    - link
+    - blockQuote
+    - horizontalLine
+    - '|'
+    - bulletedList
+    - numberedList
+    - '|'
+    - removeFormat
+    - sourceEditing
   wordLimit: null
 translationKeyFormat: null
 translationMethod: none

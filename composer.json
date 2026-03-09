@@ -25,7 +25,7 @@
   },
   "homepage": "https://craftcms-lazy-starter-kit.webworker.me",
   "require": {
-    "craftcms/ckeditor": "^4.11.1",
+    "craftcms/ckeditor": "^5.1.0",
     "craftcms/cms": "^5.9.14",
     "craftcms/feed-me": "6.11.0",
     "ether/simplemap": "5.0.4",
