@@ -3,15 +3,15 @@
 }
 
 @utility ui-h2 {
-  @apply ui-bold text-[clamp(1.75rem,3vw,3.5rem)] leading-tight;
+  @apply ui-bold text-[clamp(1.5rem,3vw,2.5rem)] leading-tight;
 }
 
 @utility ui-h3 {
-  @apply ui-bold text-[clamp(1.5rem,2.5vw,2.5rem)] leading-snug;
+  @apply ui-bold text-[clamp(1.25rem,2.5vw,2rem)] leading-snug;
 }
 
 @utility ui-h4 {
-  @apply ui-bold text-[clamp(1.25rem,2vw,2rem)] leading-snug;
+  @apply ui-bold text-[clamp(1rem,2vw,1.5rem)] leading-snug;
 }
 
 @utility ui-h5 {
