@@ -47,9 +47,9 @@ export default defineConfig(({ command }) => ({
         },
       },
     }),
-    ViteRestart({
-      restart: ['templates/**/*'],
-    }),
+    // ViteRestart({
+    //   restart: ['templates/**/*'],
+    // }),
   ],
 
   publicDir: './src/public',

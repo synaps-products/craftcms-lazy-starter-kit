@@ -1,24 +1,27 @@
 {% set isOpen = entry.switchOpen ? 1 : 0 %}
-<div data-signals:open{{ entry.id }}="{{ isOpen }}" data-animate="fade-in">
-  <div id="accordion-heading-{{ entry.id }}">
-    <button type="button"
-            class="flex items-center justify-between w-full gap-3 p-5 text-left bg-white ui-bold flex-nowrap hover:bg-stone-100 cursor-pointer rounded-md"
-            data-on:click__viewtransition="$open{{ entry.id }} = !$open{{ entry.id }}"
-            data-aria-expanded="$open{{ entry.id }}"
-            aria-controls="accordion-body-{{ entry.id }}">
-      <span class="flex items-center">
-        {{ entry.headline|nl2br }}
-      </span>
-      <svg xmlns="http://www.w3.org/2000/svg" data-class="{'rotate-180': $open{{ entry.id }}}" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-           class="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-      </svg>
-      <span class="sr-only" data-text="$open{{ entry.id }} ? 'Schließen' : 'Öffnen'"></span>
-    </button>
+{% set sig = 'open' ~ entry.id %}
+
+<details
+  {% if isOpen %}open{% endif %}
+  data-signals:{{ sig }}="{{ isOpen }}"
+  data-on:toggle="${{ sig }} = !${{ sig }}"
+  class="border-b border-stone-300 last:border-b-0"
+>
+  <summary class="flex items-center justify-between w-full gap-3 p-5 text-left bg-white ui-bold flex-nowrap hover:bg-stone-100 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+    <span class="flex items-center">
+      {{ entry.headline|nl2br }}
+    </span>
+    <svg xmlns="http://www.w3.org/2000/svg"
+         data-class="{'rotate-180': ${{ sig }}}"
+         aria-hidden="true"
+         fill="none" viewBox="0 0 24 24"
+         stroke-width="1.5" stroke="currentColor"
+         class="size-6 transition-transform duration-200 shrink-0">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+    </svg>
+  </summary>
+  <div id="accordion-body-{{ entry.id }}"
+       class="p-5 prose md:prose-lg lg:prose-xl bg-white">
+    {{ entry.text }}
   </div>
-  <div data-show="$open{{ entry.id }}" id="accordion-body-{{ entry.id }}" aria-labelledby="accordion-heading-{{ entry.id }}" role="region">
-    <div class="p-5 prose md:prose-lg lg:prose-xl bg-white">
-      {{ entry.text }}
-    </div>
-  </div>
-</div>
+</details>
