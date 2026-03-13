@@ -1,19 +1,7 @@
 import '../css/app.css'
-import 'glightbox/dist/css/glightbox.css'
-import 'highlight.js/styles/github-dark.css'
 import { animate, stagger, onScroll } from 'animejs'
 import EmblaCarousel from 'embla-carousel'
 import GLightbox from 'glightbox'
-import hljs from 'highlight.js/lib/core'
-import twig from 'highlight.js/lib/languages/twig'
-import bash from 'highlight.js/lib/languages/bash'
-import xml from 'highlight.js/lib/languages/xml'
-import javascript from 'highlight.js/lib/languages/javascript'
-
-hljs.registerLanguage('twig', twig)
-hljs.registerLanguage('bash', bash)
-hljs.registerLanguage('javascript', javascript)
-hljs.registerLanguage('xml', xml)
 
 // START
 document.documentElement.classList.add('js-enabled')
@@ -69,11 +57,6 @@ rootNodes.forEach((rootNode) => {
   if (dotsRoot) {
     setupEmblaDots(embla, dotsRoot)
   }
-})
-
-// CODEBLOCK
-document.addEventListener('DOMContentLoaded', () => {
-  hljs.highlightAll()
 })
 
 // GLIGHTBOX
