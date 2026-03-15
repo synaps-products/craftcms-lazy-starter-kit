@@ -13,6 +13,7 @@
   --content: './templates/**/*.twig', './src/**/*.css', './src/**/*.vue, ./src/**/*.js';
 
   --font-sans: 'Noto sans', 'sans-serif';
+  --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
 
   --color-primary: oklch(55.3% 0.195 38.402);
 
@@ -71,6 +72,27 @@
 
   ul, ol {
     @apply mb-8;
+  }
+
+  pre {
+    @apply bg-black text-green-300 p-2 rounded-md overflow-x-auto text-sm md:text-base ui-bold leading-relaxed;
+    tab-size: 2;
+
+    code {
+      @apply bg-transparent p-0 text-inherit font-mono;
+
+      &::before,
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  code {
+    &::before,
+    &::after {
+      content: none;
+    }
   }
 
   :not(:where([class~='not-prose'], [class~='not-prose'] *)) {

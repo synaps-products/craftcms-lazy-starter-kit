@@ -16,10 +16,6 @@
     @apply ui-bold;
   }
 
-  pre code {
-    @apply text-xs md:text-sm rounded-md;
-  }
-
   :focus {
     @apply outline-none;
   }
