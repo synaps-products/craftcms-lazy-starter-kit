@@ -1,3 +1,4 @@
+import 'glightbox/dist/css/glightbox.min.css'
 import '../css/app.css'
 import EmblaCarousel from 'embla-carousel'
 import GLightbox from 'glightbox'

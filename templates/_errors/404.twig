@@ -3,10 +3,12 @@
 {% block main %}
 
   <section class="blocks blocks--error">
-    <div class="blocks__content space-y-6">
-      <p class="text-9xl ui-bold">404</p>
-      <p class="text-4xl ui-bold">{{ 'Page not found.'|t }}</p>
-      <p class="text-2xl">{{ 'Sorry, the page your\'re looking for could not be found.'|t }}</p>
+    <div class="blocks__content space-y-8">
+      <p class="text-[clamp(8rem,20vw,18rem)] leading-none ui-bold text-pop select-none">404</p>
+      <div class="border-t-4 border-ink pt-8 space-y-4">
+        <p class="ui-h2">{{ 'Page not found.'|t }}</p>
+        <p class="text-ink-on">{{ 'Sorry, the page you\'re looking for could not be found.'|t }}</p>
+      </div>
       <a href="/" class="ui-btn ui-btn--lg">{{ 'Home'|t }}</a>
     </div>
   </section>

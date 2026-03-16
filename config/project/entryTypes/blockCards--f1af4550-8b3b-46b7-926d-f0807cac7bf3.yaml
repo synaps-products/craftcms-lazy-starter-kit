@@ -1,3 +1,4 @@
+allowLineBreaksInTitles: false
 color: violet
 description: null
 fieldLayouts:
@@ -8,9 +9,26 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            dateAdded: '2026-03-16T16:43:04+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 17c0c6a4-80a6-4cef-84f4-ebefe3af9d39 # Text - Multi
+            handle: headline
+            instructions: null
+            label: Headline
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 61e6d6af-7f1b-4d26-aee8-03abb530b6eb
+            userCondition: null
+            warning: null
+            width: 100
+          -
             dateAdded: '2025-10-02T11:45:37+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: c07bd68f-efab-420f-ad23-7131c2b59410 # Grid
             handle: null
             instructions: null
@@ -26,6 +44,7 @@ fieldLayouts:
             dateAdded: '2024-10-22T07:03:10+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 87b770e6-4e90-42b9-bee3-ce94aba9b182 # Matrix - Cards
             handle: null
             instructions: null
@@ -34,21 +53,6 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 5a977f93-3b0e-418d-a7a7-dd5cb632823b
-            userCondition: null
-            warning: null
-            width: 100
-          -
-            dateAdded: '2024-10-22T07:03:10+00:00'
-            editCondition: null
-            elementCondition: null
-            fieldUid: 3f7e97cc-08fd-47b5-89d3-c8cc473aae8b
-            handle: null
-            instructions: null
-            label: Pages
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: 66e8e592-ef20-4795-a92f-0c7d3a32b8dc
             userCondition: null
             warning: null
             width: 100
@@ -62,6 +66,7 @@ fieldLayouts:
             dateAdded: '2025-11-21T09:46:28+00:00'
             editCondition: null
             elementCondition: null
+            elementEditCondition: null
             fieldUid: 3c6dd0d6-6cbf-415f-a6fe-3bc205817b94 # Anchor
             handle: null
             instructions: null
@@ -76,6 +81,7 @@ fieldLayouts:
         name: Settings
         uid: 9f8a27a5-1b8a-47ae-97bc-1d6b4b279d54
         userCondition: null
+    thumbFieldKey: null
 handle: blockCards
 hasTitleField: false
 icon: cards
@@ -87,3 +93,4 @@ slugTranslationMethod: site
 titleFormat: null
 titleTranslationKeyFormat: null
 titleTranslationMethod: site
+uiLabelFormat: '{title}'

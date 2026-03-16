@@ -8,19 +8,20 @@
     console.log( '%c🚀 Lazy Search Scanner Initialized', 'background: linear-gradient(to right, #0af, #00e0ff); color: #000; font-weight: bold; padding: 6px 10px; border-radius: 5px; font-size: 12px;' );
     console.log( '%c🔍 Search query detected:', 'color: #ff0; font-size: 13px; font-weight: bold; padding: 2px 0;');
     console.log( '%c{{ search|e('js') }}', 'color: #fff; background: #1e1e1e; padding: 6px 12px; border-radius: 6px; font-family: monospace; font-size: 14px; box-shadow: 0 0 4px rgba(0,0,0,0.3);' );
-    _paq.push(['trackEvent', 'Search', 'Query', '{{ search|e('js') }}']);
+    if (typeof _paq !== 'undefined') _paq.push(['trackEvent', 'Search', 'Query', '{{ search|e('js') }}']);
   {% endexecutescript %}
 {% endif %}
 
 {% if entries %}
   {% patchelements %}
     <div id="searchresult-{{ type }}">
-      <p class="mb-4">✅ {{ entries|length }} results found</p>
-      <div class="divide-y divide-stone-300 space-y-3">
+      <p class="mb-4 ui-bold">{{ entries|length }} results</p>
+      <div class="divide-y-2 divide-ink">
         {% for entry in entries %}
-          <p class="py-3">
-            <a href="{{ entry.url }}" class="hover:text-primary">👉 {{ entry.title }} / {{ entry.section.handle }}</a>
-          </p>
+          <a href="{{ entry.url }}" class="flex items-center justify-between gap-4 py-3 font-bold hover:bg-pop-dim px-2 -mx-2 transition-colors duration-100">
+            <span>{{ entry.title }}</span>
+            <span class="text-sm font-normal text-ink-dim shrink-0">{{ entry.section.handle }}</span>
+          </a>
         {% endfor %}
       </div>
     </div>
@@ -30,17 +31,8 @@
     <div id="searchresult-{{ type }}">
       {% if not search %}
         <p>💡 Try entering a search term, e.g. "frontend"</p>
-        {% executescript %}
-          console.log('%c🔍 Waiting for input...', 'color: #0af; font-weight: bold; font-size: 12px;');
-          console.log('%cTry something like "frontend", "craft", or "magic unicorns".', 'color: #fff; background: #222; padding: 4px 8px; border-radius: 4px; font-family: monospace;');
-        {% endexecutescript %}
       {% else %}
-        <p>🫣 No results found for "{{ search }}". Try a different keyword.</p>
-        {% executescript %}
-          console.log('%c😵 No results for:', 'color: #f00; font-weight: bold; font-size: 12px;');
-          console.log('%c{{ search|e('js') }}', 'color: #fff; background: #f00; padding: 4px 8px; border-radius: 4px; font-family: monospace;');
-          console.log('%c📦 Your search box is empty. Try "matrix", "frontend", or summon the dev gods with "bug-free".', 'color: #999; font-style: italic; font-size: 11px;');
-        {% endexecutescript %}
+        <p class="ui-neo bg-pop inline-block px-4 py-2 ui-bold">🫣 No results for "{{ search }}" — try a different keyword.</p>
       {% endif %}
     </div>
   {% endpatchelements %}

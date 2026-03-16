@@ -4,16 +4,9 @@
 {% set type = type ?? null %}
 {% set isExternal = entry.externalUrl is not empty %}
 
-<div class="ui-card relative">
-  {% if category %}
-    <span class="absolute py-1 px-2 shadow ui-bold -top-3 right-5 text-base text-white rounded-sm"
-          style="background: {{ category.color.getHex() ?? '#000' }}"
-    >
-      {{ category }}
-    </span>
-  {% endif %}
+<div class="ui-card">
   {% if image %}
-    <div class="aspect-video">
+    <div class="aspect-video mb-0">
       {% include "_components/image.twig" with {
         image: image,
         sizes: [480],
@@ -23,9 +16,17 @@
   {% endif %}
   <div class="space-y-6 p-4">
     <div>
-      {% if date %}
-        <p class="text-base text-primary ui-bold mb-2">{{ date }}</p>
-      {% endif %}
+      <div class="flex items-center justify-between mb-2">
+        {% if date %}
+          <p class="text-base text-pop-on ui-bold">{{ date }}</p>
+        {% endif %}
+        {% if category %}
+          <span class="py-0.5 px-2 text-sm ui-bold text-ink ui-border ui-shadow-sm"
+                style="background: {{ category.color.getHex() ?? '#000' }}">
+            {{ category }}
+          </span>
+        {% endif %}
+      </div>
       <h2 class="ui-h5">
         {{ entry.headline ? entry.headline|nl2br : entry.title }}
       </h2>

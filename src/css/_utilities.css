@@ -7,7 +7,7 @@
 }
 
 @utility ui-h3 {
-  @apply ui-bold text-[clamp(1.25rem,2.5vw,2rem)] leading-[1.4];
+  @apply ui-bold text-[clamp(1.4rem,2.5vw,2rem)] leading-[1.4];
 }
 
 @utility ui-h4 {
@@ -27,13 +27,42 @@
 }
 
 @utility ui-link {
-  @apply underline underline-offset-4 hover:no-underline hover:text-primary transition;
-}
-
-@utility ui-focus {
-  @apply focus:outline-0 focus:ring-4 focus:ring-orange-700/50 focus:ring-offset-0 focus:border-0 focus:z-1;
+  @apply font-bold underline decoration-2 underline-offset-2 decoration-pop-on hover:decoration-pop-on hover:text-pop-on transition-colors duration-100;
 }
 
 @utility ui-spacer {
   @apply px-[var(--gap)] py-0;
 }
+
+@utility ui-shadow {
+  @apply shadow-[5px_5px_0_0_var(--color-ink)];
+}
+
+@utility ui-shadow-sm {
+  @apply shadow-[3px_3px_0_0_var(--color-ink)];
+}
+
+@utility ui-shadow-lg {
+  @apply shadow-[7px_7px_0_0_var(--color-ink)];
+}
+
+@utility ui-shadow-pop {
+  @apply shadow-[5px_5px_0_0_var(--color-pop-on)];
+}
+
+@utility ui-border {
+  @apply border-2 border-ink;
+}
+
+@utility ui-border-pop {
+  @apply border-2 border-pop-on;
+}
+
+@utility ui-neo {
+  @apply ui-border ui-shadow;
+}
+
+@utility ui-lift {
+  @apply transition duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:ui-shadow-lg;
+}
+

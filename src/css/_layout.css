@@ -1,7 +1,7 @@
 @layer components {
 
   .inlines {
-    @apply py-[var(--gap-blocks)];
+    @apply py-[var(--gap-inlines)];
   }
 
   .layout, .blocks {

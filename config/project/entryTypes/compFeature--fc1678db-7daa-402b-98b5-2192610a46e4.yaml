@@ -1,0 +1,78 @@
+allowLineBreaksInTitles: false
+color: green
+description: null
+fieldLayouts:
+  7a5bd6ee-67c2-4270-8678-3e4fd9d6153c:
+    cardThumbAlignment: end
+    cardView:
+      - 'layoutElement:3e5af703-8dda-4b8d-90ec-c328be3aa431'
+      - 'layoutElement:487cc30b-61c6-421d-b453-84857b9cae46'
+      - 'layoutElement:a88d2904-f0c9-447c-87ac-4dbd0d25d7d7'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-16T15:50:37+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: c05cf09b-1380-4613-8fd9-1e1a72af0e79 # Text - Single
+            handle: emoji
+            instructions: null
+            label: Emoji
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3e5af703-8dda-4b8d-90ec-c328be3aa431
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-16T15:50:37+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: c05cf09b-1380-4613-8fd9-1e1a72af0e79 # Text - Single
+            handle: headline
+            instructions: null
+            label: Headline
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 487cc30b-61c6-421d-b453-84857b9cae46
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-16T15:50:37+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 17c0c6a4-80a6-4cef-84f4-ebefe3af9d39 # Text - Multi
+            handle: text
+            instructions: null
+            label: Text
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a88d2904-f0c9-447c-87ac-4dbd0d25d7d7
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2865b3a7-3433-4d70-8d49-18508a24843c
+        userCondition: null
+    thumbFieldKey: null
+handle: compFeature
+hasTitleField: false
+icon: wreath-laurel
+name: Feature
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

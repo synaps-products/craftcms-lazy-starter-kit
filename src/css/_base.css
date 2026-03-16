@@ -1,6 +1,10 @@
 @layer base {
+  ::selection {
+    @apply bg-pop text-ink;
+  }
+
   body {
-    @apply overflow-x-hidden text-black font-sans md:text-lg lg:text-xl antialiased pt-16;
+    @apply overflow-x-hidden bg-bg text-ink font-sans md:text-lg lg:text-xl antialiased pt-16;
   }
 
   img {
@@ -9,6 +13,10 @@
 
   button {
     @apply cursor-pointer;
+  }
+
+  hr {
+    @apply border-t-4 border-ink my-8;
   }
 
   strong,
@@ -21,7 +29,7 @@
   }
 
   :focus-visible {
-    @apply ring-2 ring-primary ring-offset-2 rounded-sm;
+    @apply ring-2 ring-ink ring-offset-2;
   }
 
   :focus:not(:focus-visible) {

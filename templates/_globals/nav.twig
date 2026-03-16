@@ -2,16 +2,16 @@
 {% set navItems = craft.entries.section("navigations").eagerly().level(1).all() ?? null %}
 {% set isSearchPage = craft.app.request.pathInfo == 'search' %}
 <nav
-  class="fixed inset-x-0 top-0 z-[1001] h-16 bg-white/90 layout"
-  data-class="{ 'bg-stone-200/90': $navOpen, 'bg-white/90': !$navOpen }"
-  data-on:keydown="if (event.key === 'Escape') $navOpen = false, $searchOpen = false"
+  class="fixed inset-x-0 top-0 z-[1001] h-16 bg-canvas border-b-4 border-ink layout"
+  data-class="{ 'bg-bg': $navOpen, 'bg-canvas': !$navOpen }"
+  data-on:keydown="if (event.key === 'Escape') $navOpen = false, $searchOpen = false, $dropdownOpen = false"
   data-on:click__outside="$navOpen = false, $dropdownOpen = false"
 >
   <div class="flex items-center justify-between gap-3 w-full layout__popout">
     <div class="flex items-center shrink-0 mr-auto">
       <a class="flex items-center gap-3 text-2xl text-black ui-bold group" href="{{ home.url }}">
-        <img class="w-10 h-10 shrink-0 rounded-full shadow-xl bg-white group-hover:bg-stone-300 border-2 border-black transition" src="{{ craft.vite.asset('img/GM-1500.svg', true) }}" alt="">
-        {{ currentSite.name }}
+        <img class="w-10 h-10 shrink-0 ui-border ui-shadow-sm bg-canvas group-hover:bg-pop-dim transition" src="{{ craft.vite.asset('img/GM-1500.svg', true) }}" alt="">
+        <span class="hidden xs:inline">{{ currentSite.name }}</span>
       </a>
     </div>
 
@@ -19,37 +19,36 @@
       <button
         data-on:click="$navOpen = !$navOpen; $searchOpen = false"
         data-attr="{ 'aria-label': $navOpen ? 'Close navigation' : 'Open navigation' }"
-        class="block text-black cursor-pointer switch:hidden hover:text-primary focus:text-black focus:outline-none rounded-none"
+        class="block cursor-pointer switch:hidden hover:text-pop-on transition-colors"
         type="button"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-10">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-6">
           <path data-show="!$navOpen" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           <path data-show="$navOpen" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
         </svg>
       </button>
       <div
-        class="switch:static absolute top-full left-0 z-30 switch:flex switch:w-auto w-full grow switch:items-center bg-stone-200/90 switch:bg-transparent switch:p-0 py-4 ui-spacer"
+        class="switch:static absolute top-full left-0 z-30 switch:flex switch:w-auto w-full grow switch:items-center bg-bg border-b-4 border-ink switch:border-0 switch:bg-transparent switch:p-0 py-4 ui-spacer"
         data-class="{ 'block': $navOpen, 'hidden': !$navOpen }"
         data-show="true"
       >
         <ul class="items-center justify-end flex-1 h-full space-y-4 switch:flex switch:space-y-0 switch:space-x-3">
           {% for item in navItems %}
             <li class="h-full relative">
-              {{ item.render({ class: 'p-1 ui-bold inline-flex h-full items-center switch:px-3 text-black ', classActive: 'text-primary' }) }}
+              {{ item.render({ class: 'p-1 ui-bold inline-flex h-full items-center switch:px-3 text-ink hover:text-pop-on transition-colors', classActive: 'bg-pop-dim' }) }}
             </li>
           {% endfor %}
         </ul>
       </div>
       {% if not isSearchPage %}
         <button
-          class="flex items-center cursor-pointer hover:text-primary"
+          class="flex items-center cursor-pointer hover:text-pop-on transition-colors"
           data-on:click="$searchOpen = !$searchOpen; $navOpen = false"
           data-attr="{ 'aria-label': $searchOpen ? 'Close search' : 'Open search' }"
           type="button"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-10">
-            <path data-show="!$searchOpen" stroke-linecap="round" stroke-linejoin="round"
-                  d="m15.75 15.75-2.489-2.489m0 0a3.375 3.375 0 1 0-4.773-4.773 3.375 3.375 0 0 0 4.774 4.774ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-6">
+            <path data-show="!$searchOpen" stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             <path data-show="$searchOpen" stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
         </button>

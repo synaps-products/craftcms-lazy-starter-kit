@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.0] – 2026-03-16
+
+### Changed
+
+- Full Neobrutalism redesign
+- Added new Block "Features"
+
 ## [2.0.0] – 2026-03-12
 
 ### Changed

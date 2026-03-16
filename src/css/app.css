@@ -10,12 +10,21 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --content: './templates/**/*.twig', './src/**/*.css', './src/**/*.vue, ./src/**/*.js';
+  --content: './templates/**/*.twig', './src/**/*.css', './src/**/*.js';
 
-  --font-sans: 'Noto sans', 'sans-serif';
+  --font-sans: 'Archivo', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
 
-  --color-primary: oklch(55.3% 0.195 38.402);
+  --color-pop: var(--color-orange-400);
+  --color-pop-on: var(--color-orange-600);
+  --color-pop-dim: var(--color-orange-100);
+
+  --color-ink: var(--color-stone-900);
+  --color-ink-on: var(--color-stone-600);
+  --color-ink-dim: var(--color-stone-400);
+
+  --color-canvas: #fffef9;
+  --color-bg: #f2f0eb;
 
   --breakpoint-2xs: 384px;
   --breakpoint-xs: 480px;
@@ -33,7 +42,8 @@
 
   /* layout */
   --gap: clamp(0.5rem, 6vw, 3rem);
-  --gap-blocks: clamp(0.5rem, 6vw, 2rem);
+  --gap-blocks: clamp(0.5rem, 6vw, 3rem);
+  --gap-inlines: clamp(0.5rem, 6vw, 2rem);
   --full: minmax(var(--gap), 1fr);
   --feature: minmax(0, 200px);
   --popout: minmax(0, 100px);
@@ -42,11 +52,11 @@
 
 @utility prose {
   @apply max-w-full;
-  --tw-prose-body: var(--color-black);
-  --tw-prose-headings: var(--color-black);
-  --tw-prose-counters: var(--color-primary);
-  --tw-prose-bullets: var(--color-primary);
-  --tw-prose-hr: var(--color-stone-300);
+  --tw-prose-body: var(--color-ink);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-counters: var(--color-pop-on);
+  --tw-prose-bullets: var(--color-pop-on);
+  --tw-prose-hr: var(--color-ink);
 
   h1:not(.not-prose h1, .not-prose *) {
     @apply ui-h1;
@@ -75,7 +85,7 @@
   }
 
   pre {
-    @apply bg-black text-green-300 p-2 rounded-md overflow-x-auto text-sm md:text-base ui-bold leading-relaxed;
+    @apply bg-ink text-pop-dim p-4 overflow-x-auto text-sm md:text-base  leading-relaxed ui-border rounded-none ui-bold ui-shadow-pop;
     tab-size: 2;
 
     code {
@@ -95,12 +105,29 @@
     }
   }
 
+  blockquote {
+    @apply not-italic ui-neo bg-pop px-6 py-5 ui-bold text-ink;
+    quotes: none;
+
+    p:first-of-type::before,
+    p:last-of-type::after {
+      content: none;
+    }
+  }
+
   :not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     a {
       @apply ui-link;
     }
   }
 }
+
+.prose hr {
+  @apply border-t-4 border-ink my-8;
+  border-bottom: none;
+}
+
+
 
 
 

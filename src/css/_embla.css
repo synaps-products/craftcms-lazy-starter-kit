@@ -5,6 +5,8 @@
 
 .embla__viewport {
   @apply overflow-hidden touch-pan-y touch-pinch-zoom;
+  padding: 8px;
+  margin: -8px;
 }
 
 .embla__container {
@@ -30,10 +32,21 @@
 }
 
 .embla__dot {
-  @apply w-4 h-4 rounded-full bg-black/20;
+  @apply w-4 h-4 ui-border bg-transparent;
 }
 
 .embla__dot.is-selected {
-  @apply bg-primary;
+  @apply bg-pop;
+}
+
+.embla__button {
+  @apply ui-neo bg-canvas w-10 h-10 flex items-center justify-center
+  transition duration-100
+  hover:shadow-none hover:translate-x-[5px] hover:translate-y-[5px]
+  disabled:opacity-30 disabled:pointer-events-none;
+}
+
+.embla__button svg {
+  @apply size-5 stroke-[2.5];
 }
 

@@ -8,10 +8,10 @@
       <div class="blocks__content">
         <div class="flex justify-between mb-2">
           {% if entry.date %}
-            <p class="text-primary ui-bold">{{ entry.date|date('d.m.Y') }}</p>
+            <p class="text-pop-on ui-bold">{{ entry.date|date('d.m.Y') }}</p>
           {% endif %}
           {% if category %}
-            <span class="py-1 px-2 shadow ui-bold -top-3 right-5 bg-black/50 backdrop-blur-sm text-base text-white rounded-sm">{{ category }}</span>
+            <span class="py-1 px-2 ui-bold text-base text-ink bg-pop ui-border ui-shadow-sm">{{ category }}</span>
           {% endif %}
         </div>
         <h1 class="ui-h1">{{ entry.headline ? entry.headline|nl2br : entry.title }}</h1>

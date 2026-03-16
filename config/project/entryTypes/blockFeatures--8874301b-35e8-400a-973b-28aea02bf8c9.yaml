@@ -1,0 +1,80 @@
+allowLineBreaksInTitles: false
+color: green
+description: null
+fieldLayouts:
+  5ad96f96-62f9-4cf9-b251-b79112770d57:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-16T16:43:28+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 17c0c6a4-80a6-4cef-84f4-ebefe3af9d39 # Text - Multi
+            handle: headline
+            instructions: null
+            label: Headline
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d04bc466-1b82-4e88-ba5a-d772666f5e29
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2026-03-16T15:52:40+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 1bcb307b-3c91-4cc3-9051-c0586ac5791a # Matrix - Features
+            handle: null
+            instructions: null
+            label: Features
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ddbaa4d1-6074-4de9-aac3-e1be8088ed0c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 85c1cf18-234f-4e8c-b36c-d4661e44f19f
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2026-03-16T15:52:40+00:00'
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 3c6dd0d6-6cbf-415f-a6fe-3bc205817b94 # Anchor
+            handle: null
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 77c9eb6a-18c6-4121-a1b7-9dfe4579616d
+            userCondition: null
+            warning: null
+            width: 100
+        name: Settings
+        uid: 7171f795-b3f7-4495-bc50-abce7487ef9d
+        userCondition: null
+    thumbFieldKey: null
+handle: blockFeatures
+hasTitleField: false
+icon: wreath-laurel
+name: Features
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

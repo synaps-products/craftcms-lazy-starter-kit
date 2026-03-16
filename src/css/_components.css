@@ -8,7 +8,7 @@
   }
 
   #map-result {
-    @apply hidden lg:grid xl:grid-cols-2 3xl:grid-cols-3 gap-8 p-5 pb-0 mt-3;
+    @apply hidden lg:grid xl:grid-cols-2 3xl:grid-cols-3 gap-8 p-5 mt-3;
   }
 
   /* BUTTON & LINKS */
@@ -16,55 +16,36 @@
     @apply
     no-underline whitespace-nowrap
     inline-flex items-center gap-2
-    border border-transparent
-    bg-primary text-white
-    px-3 py-1 text-base
-    rounded-sm
-    transition-colors duration-150
-    hover:bg-primary/80 hover:no-underline
-    focus:outline-none focus:ring-4 focus:ring-primary/20
+    ui-neo
+    bg-pop text-ink
+    px-4 py-1.5 text-base
+    ui-bold uppercase tracking-wide
+    transition duration-100
+    hover:shadow-none hover:translate-x-[5px] hover:translate-y-[5px] hover:no-underline
+    focus:outline-none focus:ring-2 focus:ring-ink focus:ring-offset-2
     disabled:opacity-50 disabled:pointer-events-none;
   }
 
   .ui-btn--lg {
-    @apply px-6 py-2 text-xl;
+    @apply px-6 py-3 text-xl;
+  }
+
+  .ui-btn--dark {
+    @apply bg-ink text-pop ui-shadow-pop border-ink hover:shadow-none;
   }
 
   /*FORMS*/
-  .ui-select {
-    @apply border-4 border-black
-    rounded-sm
-    focus:outline-none
-    focus:border-primary
-    focus:ring-4 focus:ring-primary/20
-    placeholder-stone-400;
-  }
-
+  .ui-select,
   .ui-input {
-    @apply border-4 border-black
-    rounded-sm
-    focus:outline-none
-    focus:border-primary
-    focus:ring-4 focus:ring-primary/20
-    placeholder-stone-400;
+    @apply ui-neo bg-canvas
+    focus:outline-none focus:ui-border-pop focus:ui-shadow-pop
+    focus:ring-0
+    placeholder-ink-dim;
   }
 
   /*CARDS*/
   .ui-card {
-    @apply h-full bg-stone-100 border border-stone-300 p-3 space-y-3 rounded-md;
-  }
-
-  /*PICTURE*/
-  .ui-picture-blur {
-    @apply relative block overflow-hidden;
-  }
-
-  .ui-picture-blur::before {
-    @apply content-[''] absolute inset-0 bg-cover bg-[image:var(--lqip)] bg-center opacity-100 blur-sm scale-150 pointer-events-none transition-opacity duration-400 ease-in-out delay-200;
-  }
-
-  .ui-picture-blur.is-loaded::before {
-    @apply opacity-0;
+    @apply h-full bg-canvas ui-neo space-y-3 ui-lift;
   }
 
   /*MAP POPUP*/

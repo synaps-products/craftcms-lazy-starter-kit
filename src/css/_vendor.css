@@ -1,24 +1,60 @@
+/* GLIGHTBOX */
 .goverlay {
-  @apply !bg-white/95;
+  @apply !bg-ink/90;
 }
 
 .gbtn {
-  @apply !rounded-none hover:!bg-black;
+  @apply !rounded-none !bg-pop !text-ink !ui-border;
+  box-shadow: 3px 3px 0 0 var(--color-ink) !important;
+
+  &:hover {
+    @apply !bg-pop-on;
+    transform: translate(3px, 3px) !important;
+    box-shadow: none !important;
+  }
 }
 
 .gslide-image {
   @apply !shadow-none;
-}
 
-
-.leaflet-popup-content-wrapper {
-  @apply !p-0 !rounded-none !border-0;
-
-  .leaflet-popup-content {
-    @apply !m-0 ;
+  img {
+    @apply !rounded-none !ui-border;
   }
 }
 
+.gdesc-inner {
+  @apply !bg-canvas !rounded-none !border-t-2 !border-ink !text-ink;
+}
+
+.gslide-title {
+  @apply !ui-bold !text-ink;
+}
+
+.gslide-desc {
+  @apply !text-ink-on;
+}
+
+
+.leaflet-tile-container img {
+  filter: sepia(30%) brightness(105%) contrast(95%);
+}
+
+.leaflet-popup-content-wrapper {
+  @apply !p-0 !rounded-none !shadow-none !ui-border !border-4;
+
+  .leaflet-popup-content {
+    @apply !m-0;
+  }
+}
+
+.leaflet-popup-tip {
+  background: var(--color-ink) !important;
+  margin: -8px auto 0 !important;
+  box-shadow: none !important;
+}
+
 .leaflet-popup-close-button {
-  @apply !bg-white !text-black;
+  @apply !bg-pop !text-ink !ui-bold;
+  top: 0 !important;
+  right: 0 !important;
 }

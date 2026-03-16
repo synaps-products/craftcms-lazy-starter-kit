@@ -6,7 +6,7 @@
 {% block content %}
   {% set images = entry.images.eagerly().all() ?? null %}
   {% if images %}
-    <div class="grid grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2 w-full gap-3">
+    <div class="grid grid-cols-2 md:grid-cols-3 grid-rows-3 md:grid-rows-2 w-full gap-6">
       {% for image in images %}
         {% set classes = '' %}
 
@@ -29,25 +29,25 @@
           {% set parts = parts|merge(['© ' ~ image.mediaCopyright]) %}
         {%- endif -%}
 
-        <a class="block {{ classes }}"
+        <a class="block ui-neo overflow-hidden ui-lift {{ classes }}"
            href="{{ image.getUrl({ width: 1600, quality: 90 }) }}"
            data-gallery="gallery{{ entry.id }}"
            data-description="{{ parts|join(' ') }}">
           {% include "_components/image.twig" with {
             image: image,
             objectFit: true,
-            class: 'rounded-md'
+            class: ''
           } only %}
         </a>
       {% endfor %}
     </div>
-    <div class="p-2 text-base">
+    <div class="pt-3">
       <button
         type="button"
-        class="ui-link cursor-pointer"
+        class="ui-btn cursor-pointer"
         onclick="document.querySelector('[data-gallery=&quot;gallery{{ entry.id }}&quot;]')?.click()"
       >
-        👉 Start gallery ({{ images|length }} images)
+        Open gallery ({{ images|length }} images)
       </button>
     </div>
   {% endif %}

@@ -47,7 +47,21 @@ Progressive Enhancement — pages work without JavaScript.
 - SSE endpoints live in `templates/_datastar/`
 - Components use `{% include %}` with explicit `with { } only`
 - Tailwind v4 custom properties defined in `src/css/app.css`
-- Colors in oklch: `--color-primary`
+
+## Design System
+
+Custom color tokens (semantic, not numbered shades):
+- `ink` / `ink-on` / `ink-dim` — dark text, hover, muted
+- `pop` / `pop-on` / `pop-dim` — accent (orange), hover, light bg
+- `canvas` — component surface (cards, inputs, nav)
+- `bg` — page background (body)
+
+Custom utilities: `ui-neo`, `ui-border`, `ui-shadow`, `ui-shadow-sm`, `ui-shadow-lg`, `ui-shadow-pop`, `ui-lift`, `ui-btn`, `ui-card`, `ui-link`, `ui-bold`, `ui-h1`–`ui-h5`, `ui-teaser`, `ui-spacer`
+
+## Breakpoints
+
+- `switch` (`1280px`) — main layout breakpoint used for nav (mobile menu vs desktop nav). Use `switch:` prefix in Tailwind classes e.g. `switch:flex switch:hidden`
+- Standard: `2xs` (384px), `xs` (480px), `sm`, `md`, `lg`, `xl`, `2xl`, `3xl` (1840px)
 
 ## Datastar Skills
 

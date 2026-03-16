@@ -19,12 +19,25 @@
 {% set points = [] %}
 {% for e in locations %}
   {% set cat = e.relationCategories.one() %}
+  {% set image = e.card.image.eagerly().one() %}
+
+  {% set popupHtml %}
+    <div class="ui-popup overflow-hidden bg-canvas">
+      {% if image %}<img class="ui-popup__image" src="{{ image.getUrl('thumbnail') }}" alt="{{ image.alt|e }}">{% endif %}
+      <div class="ui-popup__content border-t-2 border-ink ">
+        {% if cat %}<span class="text-xs uppercase tracking-widest ui-bold text-pop-on">{{ cat.title|e }}</span>{% endif %}
+        <span class="ui-bold text-ink leading-tight mt-1">{{ e.title|e }}</span>
+        <a href="{{ e.url }}" class="text-sm mt-2 font-bold text-ink hover:text-pop-on transition-colors duration-100 no-underline">Read more →</a>
+      </div>
+    </div>
+  {% endset %}
 
   {% set points = points|merge([{
     id: e.id,
     lat: e.map.lat,
     lng: e.map.lng,
-    color: cat.color.getHex() ?? ''
+    color: cat ? cat.color.getHex() : '',
+    popup: popupHtml|trim
   }]) %}
 {% endfor %}
 
@@ -33,9 +46,7 @@
 {% if not locations %}
   {% patchelements %}
     <div id="map-result">
-      <div class="text-2xl">
-        <p>🫣 No results found".</p>
-      </div>
+      <p class="ui-neo bg-pop inline-block px-4 py-2 ui-bold">🫣 No results — try a different keyword.</p>
     </div>
   {% endpatchelements %}
 {% else %}

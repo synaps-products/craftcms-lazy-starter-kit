@@ -1,7 +1,7 @@
 {% set builder = builder ?? false %}
 {% extends builder ? "_partials/matrix.twig" : "_partials/cke.twig" %}
 {% set classWrapper = builder ? 'blocks blocks--accordions' : 'inlines inlines--accordions' %}
-{% set classContent = builder ? 'blocks__popout' : '' %}
+{% set classContent = builder ? 'blocks__content' : '' %}
 
 {% block content %}
   <div class="grid gap-6">

@@ -3,45 +3,30 @@
 {% set button = entry.button %}
 
 {% extends builder ? "_partials/matrix.twig" : "_partials/cke.twig" %}
-{% set classWrapper = builder ? 'blocks' : 'inlines' %}
-{% set classContent = builder ? entry.switchFull ? 'relative blocks__full' : 'relative blocks__feature' : '' %}
-
-{% if image %}
-  {% set classWrapper = classWrapper ~ (builder ? ' blocks--cta-image' : ' inlines--cta-image') %}
-{% else %}
-  {% set classWrapper = classWrapper ~ (builder ? ' blocks--cta' : ' inlines--cta') %}
-{% endif %}
+{% set classWrapper = builder ? 'blocks blocks--cta' : 'inlines inlines--cta' %}
+{% set classContent = builder ? 'blocks__popout' : '' %}
 
 {% block content %}
-  <div class="stack stack--end relative">
-    {% if image %}
-      <div
-        class="stack__image {{ (entry.switchInvert and entry.switchLayer) ? 'after:absolute after:inset-0 after:bg-black/50' : (entry.switchLayer ? ' after:absolute after:inset-0  after:bg-white/50' : '') }}">
-        {% include "_components/image.twig" with {
-          image: image,
-          sizes: [1980, 1400, 800],
-          objectFit: true,
-          class: 'w-full h-full md:max-h-[50vh]'
-        } only %}
+  <div class="ui-neo bg-pop-dim p-6 md:p-16 flex flex-col items-start gap-6 ui-lift">
+    <p class="ui-h1 text-ink">
+      {{ entry.headline|nl2br }}
+    </p>
+    {% if entry.text %}
+      <div class="prose md:prose-lg text-ink">
+        {{ entry.text }}
       </div>
     {% endif %}
-    <div class="stack__content layout">
-      <div class="{{ entry.switchFull ? 'layout__feature' : 'layout__content' }}{{ image ? ' py-12' }} space-y-6">
-        <p class="ui-h2{{ entry.switchInvert and image ? ' text-white' }}">
-          {{ entry.headline|nl2br }}
-        </p>
-        {% if button %}
-          {% include "_components/button.twig" with {
-            label: button.label ?? button.title,
-            url: button.url,
-            size: 'lg',
-            target: button.target ? '_blank' : null,
-            rel: button.target ? 'noopener noreferrer' : null,
-            ariaLabel: button.ariaLabel,
-            download: button.download,
-          } only %}
-        {% endif %}
-      </div>
-    </div>
+    {% if button %}
+      {% include "_components/button.twig" with {
+        label: button.label ?? button.title,
+        url: button.url,
+        size: 'lg',
+        class: 'ui-btn--dark',
+        target: button.target ? '_blank' : null,
+        rel: button.target ? 'noopener noreferrer' : null,
+        ariaLabel: button.ariaLabel,
+        download: button.download,
+      } only %}
+    {% endif %}
   </div>
 {% endblock %}

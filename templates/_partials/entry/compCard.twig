@@ -8,16 +8,16 @@
   {% endif %}
   <div class="ui-card">
     {% if image %}
-      <div class="aspect-video">
+      <div class="aspect-video mb-0">
         {% include "_components/image.twig" with {
           image: image,
           sizes: [480],
           objectFit: true,
-          class: 'rounded-sm'
+          class: ''
         } only %}
       </div>
     {% endif %}
-    <div class="space-y-8 p-4">
+    <div class="space-y-8 p-4 md:p-6">
       <h2 class="ui-h4">
         {{ entry.headline|nl2br }}
       </h2>

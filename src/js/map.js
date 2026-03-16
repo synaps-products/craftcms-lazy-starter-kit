@@ -7,7 +7,6 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 let map
 window.clusterGroup = null
 window.mapMarkers = {}
-window.popupCache = {}
 
 function initMap () {
   map = L.map('map').setView([47.8, 7.6], 9)
@@ -30,86 +29,25 @@ function updateMarkers (locations = []) {
   clusterGroup.clearLayers()
   window.mapMarkers = {}
 
-  const markers = locations.map(loc => {
+  const markers = locations
+    .filter(loc => loc.lat != null && loc.lng != null && !isNaN(loc.lat) && !isNaN(loc.lng))
+    .map(loc => {
     const color = loc.color || '#000'
 
     const icon = L.divIcon({
       className: 'custom-marker',
       html: `<div style="
         background:${color};
-        width:30px;
-        height:30px;
-        border-radius:50%;
-        border:2px solid white;
-        box-shadow:0 0 2px rgba(0,0,0,0.3);
+        width:28px;
+        height:28px;
+        border:2px solid #1c1917;
+        box-shadow:3px 3px 0 0 #1c1917;
       "></div>`,
-      iconSize: [30, 30],
-      iconAnchor: [15, 15],
+      iconSize: [28, 28],
+      iconAnchor: [14, 14],
     })
 
-    const marker = L.marker([loc.lat, loc.lng], { icon }).bindPopup('')
-
-    marker.on('popupopen', async (e) => {
-      const popup = e.popup
-      popup.setContent(window.popupCache[loc.id] || '<div class="ui-popup"><div class="ui-popup__content">Loading...</div></div>')
-
-      if (!window.popupCache[loc.id]) {
-        const query = `
-          query BlogEntry($id: [QueryArgument]) {
-            entry(id: $id) {
-              id
-              title
-              url
-              ... on etBlogEntry_Entry {
-                  card {
-                    image {
-                      url(transform: "thumbnail")
-                      width
-                      height
-                      alt
-                    }
-                  }
-                  relationCategories {
-                    title
-                  }
-                }
-            }
-          }
-        `
-        try {
-          const res = await fetch('/api', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ query, variables: { id: loc.id } }),
-          })
-          const { data, errors } = await res.json()
-
-          if (errors) {
-            throw new Error(errors[0].message)
-          }
-          const e = data.entry
-
-          const html = `
-            <div class="ui-popup">
-              ${e.card?.image?.[0]?.url ? `
-                <div class="ui-popup__image">
-                  <img src="${e.card.image[0].url}" alt="${e.card.image[0].alt || ''}">
-                </div>` : ''
-          }
-              <div class="ui-popup__content">
-                <span class="ui-bold">${e.relationCategories?.[0]?.title || ''}</span>
-                <strong>${e.title}</strong>
-                <a href="${e.url}" class="ui-link">Read more →</a>
-              </div>
-            </div>
-          `
-          window.popupCache[loc.id] = html
-          marker.setPopupContent(html)
-        } catch (err) {
-          popup.setContent('<div class="ui-popup"><div class="ui-popup__content">⚠️ Error loading content.</div></div>')
-        }
-      }
-    })
+    const marker = L.marker([loc.lat, loc.lng], { icon }).bindPopup(loc.popup || '')
 
     if (loc.id) {
       window.mapMarkers[loc.id] = marker

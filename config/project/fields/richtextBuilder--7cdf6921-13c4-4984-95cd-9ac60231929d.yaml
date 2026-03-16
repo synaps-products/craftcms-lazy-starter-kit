@@ -29,6 +29,14 @@ settings:
       __assoc__:
         -
           - uid
+          - 8874301b-35e8-400a-973b-28aea02bf8c9 # Features
+        -
+          - expanded
+          - false
+    -
+      __assoc__:
+        -
+          - uid
           - 82e2a38f-ac8e-4b00-8b0c-d9ab4dc9ad7d # Media
         -
           - expanded
@@ -71,8 +79,8 @@ settings:
     - '2'
     - '3'
     - '4'
-  imageEntryTypeUid: 76206244-6c91-4de1-b3d0-68c5d6a77369 # CTA
-  imageFieldUid: 60975007-2c9c-4def-920c-c569249360dc
+  imageEntryTypeUid: 9b278eea-1d19-4a12-87d0-8fd0d4ccade2 # Gallery
+  imageFieldUid: b8d6efb4-2958-4af8-bc7d-70882b9d2432
   imageMode: img
   js: "return {\r\n  style: {\r\n    definitions: [\r\n      {\r\n        name: 'Teaser',\r\n        element: 'p',\r\n        classes: [\r\n          'ui-teaser',\r\n        ],\r\n      }\r\n    ],\r\n  },\r\n}"
   options: null
