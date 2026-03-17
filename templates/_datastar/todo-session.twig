@@ -1,5 +1,0 @@
-{#
-  Reopens the PHP session if it was closed by shouldCloseSession = true.
-  Include this at the top of every todo SSE endpoint.
-#}
-{% do craft.app.session.open() %}

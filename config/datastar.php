@@ -25,6 +25,13 @@ return [
         'registerScript' => true,
 
         /**
+         * Whether to close the session before rendering SSE templates.
+         * Must be false to allow session writes (e.g. craft.app.session.set()) in SSE endpoints.
+         * Default is true, which breaks session persistence on Apache.
+         */
+        'shouldCloseSession' => false,
+
+        /**
          * The name of the signals variable that will be injected into Datastar templates.
          */
         'signalsVariableName' => 'signals',
