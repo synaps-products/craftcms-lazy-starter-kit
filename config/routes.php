@@ -11,5 +11,6 @@
 
 return [
     'flexible-grid-layout' => ['template' => '_custom/grid-layout'],
-    'rick-and-morty-datastar' => ['template' => '_custom/rick-and-morty']
+    'rick-and-morty-datastar' => ['template' => '_custom/rick-and-morty'],
+    'hypermedia-todolist-craft-cms-datastar' => ['template' => '_custom/todo'],
 ];

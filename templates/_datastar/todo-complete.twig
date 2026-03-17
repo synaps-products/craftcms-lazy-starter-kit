@@ -1,0 +1,16 @@
+{% set todoId = signals.todoId ?? '' %}
+{% set todos = craft.app.session.get('todos', []) %}
+
+{% if todoId %}
+  {% set updatedTodos = [] %}
+  {% for todo in todos %}
+    {% if todo.id == todoId %}
+      {% set updatedTodos = updatedTodos | merge([todo | merge({ completed: not todo.completed })]) %}
+    {% else %}
+      {% set updatedTodos = updatedTodos | merge([todo]) %}
+    {% endif %}
+  {% endfor %}
+  {% do craft.app.session.set('todos', updatedTodos) %}
+{% endif %}
+
+{% include '_datastar/todo-list' %}

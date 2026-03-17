@@ -1,0 +1,24 @@
+{% set todoInput = signals.todoInput ?? '' %}
+{% set todoInput = todoInput | trim %}
+{% set todos = craft.app.session.get('todos', []) %}
+
+{% set isDuplicate = todos | filter(t => t.title | lower == todoInput | lower) | length > 0 %}
+
+{% if todoInput and not isDuplicate and todos | length < 50 %}
+  {% set newTodo = {
+    id: craft.app.security.generateRandomString(10),
+    title: todoInput,
+    completed: false,
+    createdAt: now | date('U')
+  } %}
+  {% set todos = todos | merge([newTodo]) %}
+  {% do craft.app.session.set('todos', todos) %}
+
+  {% patchsignals { todoInput: '', todoError: '' } %}
+{% elseif isDuplicate %}
+  {% patchsignals { todoError: '"' ~ todoInput ~ '" already exists.' } %}
+{% elseif todos | length >= 50 %}
+  {% patchsignals { todoError: 'Maximum of 5 todos reached.' } %}
+{% endif %}
+
+{% include '_datastar/todo-list' %}

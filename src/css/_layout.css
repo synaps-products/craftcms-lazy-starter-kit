@@ -83,7 +83,7 @@
 
   .blocks--header {
     > * {
-      @apply pb-0;
+      @apply pb-0 pt-[calc(var(--gap-blocks)*1.25)];
     }
   }
 
