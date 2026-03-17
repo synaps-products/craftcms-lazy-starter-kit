@@ -13,4 +13,6 @@
   {% do craft.app.session.set('todos', updatedTodos) %}
 {% endif %}
 
-{% include '_datastar/todo-list' %}
+{% patchelements with {useViewTransition: true} %}
+  {% include '_datastar/todo-list' %}
+{% endpatchelements %}

@@ -21,4 +21,6 @@
   {% patchsignals { todoError: 'Maximum of 5 todos reached.' } %}
 {% endif %}
 
-{% include '_datastar/todo-list' %}
+{% patchelements with {useViewTransition: true} %}
+  {% include '_datastar/todo-list' %}
+{% endpatchelements %}
