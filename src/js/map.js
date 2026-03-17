@@ -16,7 +16,30 @@ function initMap () {
     attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
   }).addTo(map)
 
-  clusterGroup = L.markerClusterGroup()
+  clusterGroup = L.markerClusterGroup({
+    iconCreateFunction (cluster) {
+      const count = cluster.getChildCount()
+      return L.divIcon({
+        className: 'custom-cluster',
+        html: `<div style="
+          background:#ffffff;
+          color:#1c1917;
+          width:40px;
+          height:40px;
+          border:2px solid #1c1917;
+          box-shadow:3px 3px 0 0 #1c1917;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-weight:900;
+          font-size:15px;
+          font-family:monospace;
+        ">${count}</div>`,
+        iconSize: [40, 40],
+        iconAnchor: [20, 20],
+      })
+    },
+  })
   map.addLayer(clusterGroup)
   window.clusterGroup = clusterGroup
 }
@@ -32,29 +55,29 @@ function updateMarkers (locations = []) {
   const markers = locations
     .filter(loc => loc.lat != null && loc.lng != null && !isNaN(loc.lat) && !isNaN(loc.lng))
     .map(loc => {
-    const color = loc.color || '#000'
+      const color = loc.color || '#000'
 
-    const icon = L.divIcon({
-      className: 'custom-marker',
-      html: `<div style="
+      const icon = L.divIcon({
+        className: 'custom-marker',
+        html: `<div style="
         background:${color};
         width:28px;
         height:28px;
         border:2px solid #1c1917;
         box-shadow:3px 3px 0 0 #1c1917;
       "></div>`,
-      iconSize: [28, 28],
-      iconAnchor: [14, 14],
+        iconSize: [28, 28],
+        iconAnchor: [14, 14],
+      })
+
+      const marker = L.marker([loc.lat, loc.lng], { icon }).bindPopup(loc.popup || '')
+
+      if (loc.id) {
+        window.mapMarkers[loc.id] = marker
+      }
+
+      return marker
     })
-
-    const marker = L.marker([loc.lat, loc.lng], { icon }).bindPopup(loc.popup || '')
-
-    if (loc.id) {
-      window.mapMarkers[loc.id] = marker
-    }
-
-    return marker
-  })
 
   clusterGroup.addLayers(markers)
 
