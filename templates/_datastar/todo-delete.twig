@@ -1,3 +1,4 @@
+{% include '_datastar/todo-session' %}
 {% set todoId = signals.todoId ?? '' %}
 {% set todos = craft.app.session.get('todos', []) %}
 
