@@ -14,7 +14,7 @@
   {% do craft.app.session.set('todos', updatedTodos) %}
   {% if deletedTodo %}
     {% executescript %}
-      if (typeof _paq !== 'undefined') _paq.push(['trackEvent', 'Todo', 'Delete', '{{ deletedTodo.title|e('js') }}']);
+      if (typeof _paq !== 'undefined') _paq.push(['trackEvent', 'Todo', 'Delete']);
     {% endexecutescript %}
   {% endif %}
   {% patchsignals { todo_error: '' } %}
