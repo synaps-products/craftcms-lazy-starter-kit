@@ -7,10 +7,10 @@
 
     <h2 class="ui-h2 text-ink">Clean. Modular.<br>Ready for real-world use.</h2>
 
-    <p class="text-ink md:text-lg max-w-2xl mx-auto">I'm <strong>Andi Grether</strong>, a freelance full-stack developer specialized in Craft CMS. I work with creative agencies and design teams
-      who need a reliable technical partner. Visit <a href="https://webworker.me"
-                                                      class="ui-link">webworker.me</a></p>
-
+    <p class="text-ink md:text-lg max-w-2xl mx-auto">
+      I'm <strong>Andi Grether</strong>, a freelance full-stack developer specialized in Craft CMS. I work with creative agencies and design teams who need a reliable technical partner. Visit <a
+        href="https://webworker.me" class="ui-link">webworker.me</a>
+    </p>
     <nav>
       <ul class="flex flex-wrap gap-6 justify-center">
         {% if search %}
@@ -24,7 +24,20 @@
         {% endif %}
       </ul>
     </nav>
-
+    <noscript>
+      <style>#github-stats-block {
+          display: none
+        }</style>
+    </noscript>
+    <div id="github-stats-block" class="space-y-3 pt-8">
+      <p class="text-xs uppercase tracking-widest text-ink-dim">GitHub Stats</p>
+      <ul id="results-github" class="flex items-center justify-center gap-6 text-sm font-medium text-ink" data-on-intersect__once="{{ datastar.get('_datastar/github-stats.twig') }}">
+        <li class="opacity-30">···</li>
+      </ul>
+      <p class="text-sm text-ink-dim">
+        Like what you see? <a href="https://github.com/handplant/craftcms-lazy-starter-kit" class="underline hover:no-underline" target="_blank" rel="noopener noreferrer">Star the repo on GitHub.</a>
+      </p>
+    </div>
   </div>
 
   <div class="blocks__feature border-t-2 border-ink mt-6 pt-0">
