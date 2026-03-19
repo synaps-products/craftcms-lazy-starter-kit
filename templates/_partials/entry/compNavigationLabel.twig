@@ -43,7 +43,7 @@
     }"
     >
       {% for item in children %}
-        {{ item.render({ class: 'whitespace-nowrap px-2 py-1 hover:bg-pop-dim transition-colors', classActive: 'border-l-4 border-ink pl-2 bg-pop-dim' }) }}
+        <li>{{ item.render({ class: 'whitespace-nowrap px-2 py-1 hover:bg-pop-dim transition-colors', classActive: 'border-l-4 border-ink pl-2 bg-pop-dim' }) }}</li>
       {% endfor %}
     </ul>
   {% endif %}

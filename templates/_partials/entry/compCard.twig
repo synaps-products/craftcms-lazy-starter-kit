@@ -32,7 +32,7 @@
           url: button.url,
           target: button.target ? '_blank' : null,
           rel: button.target ? 'noopener noreferrer' : null,
-          ariaLabel: button.ariaLabel,
+          ariaLabel: button.ariaLabel ?? ((button.label ?? button.title) ~ ': ' ~ entry.headline),
           download: button.download,
         } only %}
       {% endif %}
