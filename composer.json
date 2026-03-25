@@ -28,6 +28,7 @@
   "homepage": "https://craftcms-lazy-starter-kit.webworker.me",
   "require": {
     "craftcms/ckeditor": "^5.2.0",
+    "craftcms/cloud": "*",
     "craftcms/cms": "^5.9.14",
     "craftcms/feed-me": "6.11.0",
     "ether/simplemap": "5.0.4",
@@ -52,6 +53,7 @@
   "config": {
     "allow-plugins": {
       "craftcms/plugin-installer": true,
+      "php-http/discovery": true,
       "yiisoft/yii2-composer": true
     },
     "sort-packages": true,
